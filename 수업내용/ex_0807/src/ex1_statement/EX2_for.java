@@ -1,0 +1,29 @@
+package ex1_statement;
+
+public class EX2_for {
+    public static void main(String[] args) {
+
+        //1~10까지의 정수들 중에서 홀수의 합만 계산하여 출력
+        //결과 : 25
+        
+        for(int i = 1; i < 10; i += 2){
+           System.out.println(i);
+            
+        }//for
+
+        System.out.println("--------------");
+
+        int sum = 0; //for 안에다가 만들면 안된다!
+
+        for(int i = 1; i < 10; i++ ){
+            
+            if( i % 2 == 1){
+                sum += i;
+            }
+          System.out.println("결과 : "+ sum);
+             
+         }//for (다시 풀어야 한다.)
+
+    }// main
+
+}
