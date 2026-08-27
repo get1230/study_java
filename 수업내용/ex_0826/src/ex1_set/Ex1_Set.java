@@ -1,71 +1,67 @@
 package ex1_set;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
 
 public class Ex1_Set {
     public static void main(String[] args) {
+        
+        //Set<E>
+        //List와 동일하게, 여러개의 데이터를 한꺼번에 저장하는 자료구조
+        //List와는 다르게 저장되는 데이터의 순서(index)가 없다.
+        //중복되는 값을 허용하지 않는다.
 
-        // collection : 많은 수의 데이터를 그 사용 목적에 적합한 구조로 묶어서
-        // 하나로 그룹화 한 객체
-        // --------------------
-        // Set, Map, List
+        //Set<자료형> set = new HashSet<자료형>();
+        Set<String> set = new HashSet<String>();
 
-        // Set은 java.util 패키지의 인터페이스다. (제너릭 타입의 인터페이스)
-        // 특정 코드에서 중복된 값의 허용이 있어서는 안될 때 사용
-        // 복잡한 코드없이 중복요소를 빠르게 제거할 수 있다.
+        //Set에 데이터 추가
+        set.add("홍길동");
+        set.add("김길동");
+        set.add("박길동");
+        set.add("홍길동");
 
-        // Set인터페이스를 구현하고 있는 대표적인 자식클래스
-        // HashSet : 정렬이 안됨.
-        // TreeSet
-        Set<Integer> set = new HashSet<>(); // 실무적인 형태
-        set.add(150);
-        set.add(70);
-        set.add(10);
-        set.add(200);
-        set.add(10); // 중복이라 안써짐
-
-        set.clear(); // set의 모든 값을 비운다.
-
-        System.out.println("set의 크기 " + set.size());
         System.out.println(set);
 
-        System.out.println("----------------");
+        System.out.println("--------------------");
 
-        Set<Integer> set2 = new HashSet<Integer>();
-        Random rnd = new Random();
+        //Set의 크기
+        System.out.println(set.size());
 
-        while(true){
-            int r = rnd.nextInt(6)+1;
-            set2.add(r);
+        //Set의 데이터 삭제
+        set.remove("김길동");
+        System.out.println(set);
 
-            if(set2.size() == 6){
-                break;
-            }
+        System.out.println("--------------------");
 
-        }//while
-
-        System.out.println(set2);
-
-        //set2를 배열로 변환
-        Integer [] arr = set2.toArray(new Integer[0]); //공식
-
-        for(int i = 0; i < arr.length; i++){
-            System.out.print( arr[i] + " ");
-        }//for
-
-        System.out.println("---------------");
-
-        int [] arr2 = new int [ set2.size()];
-        int i = 0;
-        for(Integer num : set2){
-            arr2[i++] = num; //엥? 뭐야?
+        //Set을 배열로 변경
+        Object[] arr = set.toArray();
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
         }
 
-        for(int j = 0; j < arr2.length; j++){
-            System.out.print(arr2[j] + " ");
+        System.out.println("--------------------");
+
+        //Iterator : 반복자
+        //Set처럼 index가 없는 자료구조에서 데이터를 순차적으로 꺼내기 위해 사용
+        Iterator<String> it = set.iterator();
+
+        while (it.hasNext()) {
+            String str = it.next();
+            System.out.println(str);
         }
-        
-    }// main
+
+        System.out.println("--------------------");
+
+        //1~45 사이의 난수 6개 생성
+        Set<Integer> lotto = new HashSet<Integer>();
+
+        while (lotto.size() < 6) {
+            lotto.add(new Random().nextInt(45) + 1);
+        }
+
+        System.out.println(lotto);
+
+    }//main
 }

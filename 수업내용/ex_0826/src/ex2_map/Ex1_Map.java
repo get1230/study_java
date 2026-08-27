@@ -1,33 +1,41 @@
-package ex1_set.ex2_map;
+package ex2_map;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Ex1_Map {
     public static void main(String[] args) {
+        
+        //Map<K, V>
+        //key와 value의 쌍으로 데이터를 저장하는 자료구조
+        //key는 중복될 수 없고, value는 중복될 수 있다.
+        //순서(index)가 없다.
 
-        // map : 대량의 데이터 중에서 원하는 키값만 알면, 값을 꺼내오는 속도가 매우 빠르다.
-        // key , value
-        Map<Integer, Character> map = new HashMap<>();
-        map.put(10, 'A');
-        map.put(11, 'C');
-        map.put(12, 'A');
-        map.put(10, 'D'); // key값이 중복되면, 마지막값이 갱신된다.
-        System.err.println("size : " + map.size()); // set처럼 size가 곶이곶대로 늘어나지 않는다.
+        Map<String, Integer> map = new HashMap<String, Integer>();
 
-        char res = map.get(11);
-        System.out.println(res);
+        //Map에 데이터 추가
+        map.put("홍길동", 20);
+        map.put("김길동", 30);
+        map.put("박길동", 40);
+        map.put("홍길동", 50);
 
-        System.out.println("map : " + map); // index가 없기에, 바로찍을 수 있다.
+        System.out.println(map);
 
-        if (map.containsKey(10)) {
-            System.out.println("map에 key가 10인 데이터가 있음");
-        }
+        //key를 통해 value를 가져온다.
+        System.out.println(map.get("홍길동"));
 
-        if( map.containsValue('A')){
-            System.out.println("map에 A가 저장되어 있음");
-        }
+        //Map의 크기
+        System.out.println(map.size());
 
-    }// main
+        //key가 존재하는지 확인
+        System.out.println(map.containsKey("김길동"));
 
+        //value가 존재하는지 확인
+        System.out.println(map.containsValue(40));
+
+        //데이터 삭제
+        map.remove("김길동");
+        System.out.println(map);
+
+    }//main
 }
